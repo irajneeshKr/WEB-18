@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        #navbar{
+            display: flex;
+           justify-content: space-around;
+            font-size: 28px;
+            background-color: yellow;
+            padding: 10px;
+        }
+        a {
+          text-decoration: none;
+           color: black;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>backend</title>
+    <link rel="stylesheet" href="navbar.html">
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="backend.html">backend</a></div>
+        <div><a href="frontend.html">frontend</a></div>
+    </div>
+    <form id="form">
+    <input type="text" id="name" placeholder="eneter investors name">
+    <input type="text" id="img" placeholder="enter img url">
+    <input type="text" id="role" placeholder="job role">
+    <input type="text" id="logo" placeholder="enter companylogo url">
+   <input type="submit" >
+</form>
+</body>
+</html>
+
+<script>
+// var name =document.querySelector("#name").value;
+// var imgURL =document.querySelector("#img").value;
+// var role =document.querySelector("#role").value;
+// var logo =document.querySelector("#logo").value;
+
+document.querySelector("form").addEventListener("submit",investors);
+
+ //here we store invstors data in the form of array of obj.
+ var investorsData=JSON.parse(localStorage.getItem("investorData")) || [];
+
+function investors(){
+    event.preventDefault();
+ 
+    //key-value of form data.
+    var investorsObj={
+        Img:form.img.value,
+        Name:form.name.value,
+        Role:form.role.value,
+        Logo:form.logo.value
+    }
+  
+    investorsData.push(investorsObj);
+    //now store it to local storage. key-value.
+    //console.log(investorsData);
+    localStorage.setItem("investorData",JSON.stringify(investorsData));
+   
+}
+
+
+</script>
